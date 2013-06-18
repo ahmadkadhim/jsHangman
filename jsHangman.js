@@ -4,7 +4,8 @@ $(document).ready(function() {
 	var words = ["orange", "graph", "easy", "logical", "eerie", "feelers", "starfish"];
 	var chances = 8;
 	var previousLetters = [];
-	var word = "easy";
+	console.log(words);
+	var word = words[Math.floor(Math.random()*words.length)];
 	var letter = "";
 	var board = "";
 	var counter = 0;
@@ -85,13 +86,12 @@ $(document).ready(function() {
 
 
 	$("#letterinput").submit(function() {
-		if (chances !=0 && $("#board").text().indexOf("_") !== -1) {
 				yourGuess();
-		} else if (chances == 0) {
-			$("#feedback").text("You're a failure and you've always been a failure");
-		} else if ($("#board").text().indexOf("_") == -1) {
-			$("#feedback").text("Success! The money and hoes are on the way!");
-		};
+				if (chances == 0) {
+					$("#feedback").text("You're a failure and you've always been a failure");
+				} else if ($("#board").text().indexOf("_") == -1) {
+					$("#feedback").text("Success! The money and hoes are on the way!");
+				};
 		$("#inputarea").val("");
 		return false;
 	});
