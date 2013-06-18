@@ -14,11 +14,7 @@ $(document).ready(function() {
 			board += "_ ";
 		};
 		$("#board").text(board);
-
-		$("#chancesleft").text("Chances Left: " + chances);
 	};
-
-	drawBoard(word);
 
 	function checkValidInput(letter) {
 		if (letter.length != 1) { //return false for inputs <1 or >1
@@ -40,14 +36,12 @@ $(document).ready(function() {
 	};
 
 	function putLetterOnBoard(letter) {
-		counter = 0;
 		for (var i = 0; i < word.length; i++) {
 			if (letter == word[i]) {
 				replacement = $("#board").text().substring(0,i*2) + word[i] + $("#board").text().substring(i*2+1);
 				console.log(replacement);
 				$("#board").text(replacement)
 			};
-			counter += 2;
 		};
 	};
 
@@ -83,14 +77,19 @@ $(document).ready(function() {
 	};
 
 	function playGame() {
+		drawBoard(word);
+		$("#chancesleft").text("Chances Left: " + chances);
+		while (chances !=0 && $("#board").text().indexOf("_") !== -1) {
+				yourGuess();
+				evaluateLetter(letter);
+		}
 		if (chances == 0) {
 			alert("You're a failure and you've always been a failure");
-		} else if (board.indexOf("_") == -1) {
+		} else if ($("#board").text().indexOf("_") == -1) {
 			alert("Success! The money and hoes are on the way!");
-		} else {
-			yourGuess();
-			evaluateLetter(letter);
-		}
+		};
 	};
+
+playGame();
 
 });

@@ -6,12 +6,12 @@ html {
 
 body {
 	background: #ffffff;
-	background: -moz-linear-gradient(top, #ffffff 0%, #d5d5d5 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#d5d5d5));
-	background: -webkit-linear-gradient(top, #ffffff 0%,#d5d5d5 100%);
-	background: -o-linear-gradient(top, #ffffff 0%,#d5d5d5 100%);
-	background: -ms-linear-gradient(top, #ffffff 0%,#d5d5d5 100%);
-	background: linear-gradient(to bottom, #ffffff 0%,#d5d5d5 100%);
+	background: -moz-linear-gradient(top, #ffffff 0%, #c5c5c5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#c5c5c5));
+	background: -webkit-linear-gradient(top, #ffffff 0%,#c5c5c5 100%);
+	background: -o-linear-gradient(top, #ffffff 0%,#c5c5c5 100%);
+	background: -ms-linear-gradient(top, #ffffff 0%,#c5c5c5 100%);
+	background: linear-gradient(to bottom, #ffffff 0%,#c5c5c5 100%);
 }
 
 h1, h2, h3, p {
