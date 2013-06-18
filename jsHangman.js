@@ -46,12 +46,14 @@ $(document).ready(function() {
 	};
 
 	function evaluateLetter(letter) {
-		if (correctLetter(letter)) {
+		console.log(previousLetters.join().indexOf(letter))
+		if (previousLetters.join().indexOf(letter) != -1) {
+			console.log("test");
+			$("#feedback").text("You've already guessed that, goldfish");
+		} else if (correctLetter(letter)) {
 			putLetterOnBoard(letter);
-		} else if (previousLetters.join().indexOf(letter) != -1) {
-			alert("You've already guessed that, goldfish");
 		} else {
-			alert("Wrong Guess!");
+			$("#feedback").text("Wrong Guess!");
 			chances -= 1;
 			$("#chancesleft").text("Chances Left: " + chances);
 		};
@@ -62,34 +64,36 @@ $(document).ready(function() {
 	};
 
 	function yourGuess() {
-		letter = prompt("Please guess a letter\n(One letter at a time, lowercase)", "");
+		letter = $(":input").val();
 		// letter may be null or empty string at this point
 		if (letter == null || letter == "") {
-			alert("You did not type in a guess");
-			yourGuess();
+			$("#feedback").text("You did not type in a guess");
+		} else if (checkValidInput(letter) === false) {		// once you're sure you have a guess entered, then make sure it's valid
+			$("#feedback").text("Invalid input! Please type in just one letter");;
+		} else {
+			letter = letter.toLowerCase();
+			evaluateLetter(letter);
 		};
-		// once you're sure you have a guess entered, then make sure it's valid
-		if (checkValidInput(letter) === false) {
-			alert("Invalid input! Please type in just one letter");
-			yourGuess();
-		};
-		letter = letter.toLowerCase();
 	};
 
-	function playGame() {
+	function initGame() {
 		drawBoard(word);
 		$("#chancesleft").text("Chances Left: " + chances);
-		while (chances !=0 && $("#board").text().indexOf("_") !== -1) {
-				yourGuess();
-				evaluateLetter(letter);
-		}
-		if (chances == 0) {
-			alert("You're a failure and you've always been a failure");
-		} else if ($("#board").text().indexOf("_") == -1) {
-			alert("Success! The money and hoes are on the way!");
-		};
 	};
 
-playGame();
+	initGame();
+
+
+	$("#letterinput").submit(function() {
+		if (chances !=0 && $("#board").text().indexOf("_") !== -1) {
+				yourGuess();
+		} else if (chances == 0) {
+			$("#feedback").text("You're a failure and you've always been a failure");
+		} else if ($("#board").text().indexOf("_") == -1) {
+			$("#feedback").text("Success! The money and hoes are on the way!");
+		};
+		$("#inputarea").val("");
+		return false;
+	});
 
 });

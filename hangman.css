@@ -14,9 +14,10 @@ body {
 	background: linear-gradient(to bottom, #ffffff 0%,#c5c5c5 100%);
 }
 
-h1, h2, h3, p {
-	font-family: "Futura";
+h1, h2, h3, p, form {
+	font-family: "Futura", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	text-align: center;
+	font-size: 1.5em;
 }
 
 h1 {
@@ -31,10 +32,10 @@ h2#subtitle {
 }
 
 h3 {
-	font-size: 1.5em;
 	margin-top: 50px;
 }
 
-p {
-	font-size: 1.5em;
+form {
+	text-align: center;
+	margin: 50px 0px 100px 0px;
 }
