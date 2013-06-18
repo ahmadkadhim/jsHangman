@@ -41,7 +41,14 @@ $(document).ready(function() {
 
 	function putLetterOnBoard(letter) {
 		counter = 0;
-		console.log(letter);
+		for (var i = 0; i < word.length; i++) {
+			if (letter == word[i]) {
+				replacement = $("#board").text().substring(0,i*2) + word[i] + $("#board").text().substring(i*2+1);
+				console.log(replacement);
+				$("#board").text(replacement)
+			};
+			counter += 2;
+		};
 	};
 
 	function evaluateLetter(letter) {
@@ -56,12 +63,9 @@ $(document).ready(function() {
 		};
 		if (previousLetters.join().indexOf(letter) === -1) {
 			previousLetters.push(letter);
-			$("#previousGuesses").text(previousLetters.join(", "));
-		}
+			$("#previousguesses").text(previousLetters.join(", "));
+		};
 	};
-
-	evaluateLetter("a");
-	evaluateLetter("b");
 
 	function yourGuess() {
 		letter = prompt("Please guess a letter\n(One letter at a time, lowercase)", "");

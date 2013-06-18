@@ -14,7 +14,7 @@ body {
 	background: linear-gradient(to bottom, #ffffff 0%,#d5d5d5 100%);
 }
 
-h1, h2, p {
+h1, h2, h3, p {
 	font-family: "Futura";
 	text-align: center;
 }
@@ -24,10 +24,15 @@ h1 {
 	margin-bottom: 6px;
 }
 
-#subtitle {
+h2#subtitle {
 	font-size: 1.2em;
 	margin-top: 0px;
 	margin-bottom: 45px;
+}
+
+h3 {
+	font-size: 1.5em;
+	margin-top: 50px;
 }
 
 p {
