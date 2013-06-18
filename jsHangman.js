@@ -33,7 +33,6 @@ $(document).ready(function() {
 	function correctLetter(letter) {
 		// returns true if letter is in the word (does not return -1)
 		if (word.indexOf(letter) == -1) {
-			chances -= 1;
 			return false;
 		} else {
 			return true;
@@ -41,12 +40,28 @@ $(document).ready(function() {
 	};
 
 	function putLetterOnBoard(letter) {
-
+		counter = 0;
+		console.log(letter);
 	};
 
 	function evaluateLetter(letter) {
-
+		if (correctLetter(letter)) {
+			putLetterOnBoard(letter);
+		} else if (previousLetters.join().indexOf(letter) != -1) {
+			alert("You've already guessed that, goldfish");
+		} else {
+			alert("Wrong Guess!");
+			chances -= 1;
+			$("#chancesleft").text("Chances Left: " + chances);
+		};
+		if (previousLetters.join().indexOf(letter) === -1) {
+			previousLetters.push(letter);
+			$("#previousGuesses").text(previousLetters.join(", "));
+		}
 	};
+
+	evaluateLetter("a");
+	evaluateLetter("b");
 
 	function yourGuess() {
 		letter = prompt("Please guess a letter\n(One letter at a time, lowercase)", "");
@@ -61,8 +76,6 @@ $(document).ready(function() {
 			yourGuess();
 		};
 		letter = letter.toLowerCase();
-		previousLetters.push(letter);
-		$("#previousGuesses").text(previousLetters.join(", "));
 	};
 
 	function playGame() {
